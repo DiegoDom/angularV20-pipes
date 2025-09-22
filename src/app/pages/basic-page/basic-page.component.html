@@ -1,0 +1,101 @@
+<section>
+  <h1 class="text-2xl font-bold">Basic Pipes</h1>
+  <h3 class="text-xl font-thin">Included pipes in Angular</h3>
+</section>
+<div class="stats shadow w-full mt-2">
+  <div class="stat place-items-left">
+    <div class="stat-title">Lowercase Pipe</div>
+    <div class="stat-value">{{ nameUpper() | lowercase }}</div>
+    <div class="stat-desc text-secondary">{{ nameUpper() }}</div>
+  </div>
+
+  <div class="stat place-items-left">
+    <div class="stat-title">Uppercase</div>
+    <div class="stat-value">{{ nameLower() | uppercase }}</div>
+    <div class="stat-desc text-secondary">{{ nameLower() }}</div>
+  </div>
+
+  <div class="stat place-items-left">
+    <div class="stat-title">Title</div>
+    <div class="stat-value">{{ fullName() | titlecase }}</div>
+    <div class="stat-desc text-secondary">{{ fullName() }}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="stats shadow w-full">
+  <div class="stat place-items-left">
+    <div class="stat-title">Date</div>
+    <div class="stat-value">{{ customDate() | date }}</div>
+    <div class="stat-desc text-secondary">{{ customDate() }}</div>
+  </div>
+
+  <div class="stat place-items-left">
+    <div class="stat-title">Date | long | GMT-6</div>
+    <div class="stat-value">{{ customDate() | date : 'long' : 'GMT-6' }}</div>
+    <div class="stat-desc text-secondary">{{ customDate() }}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="stats shadow w-full">
+  <div class="stat place-items-left">
+    <div class="stat-title">Date | short | GMT-6</div>
+    <div class="stat-value">{{ customDate() | date : 'short' : 'GMT-6' }}</div>
+    <div class="stat-desc text-secondary">{{ customDate() }}</div>
+  </div>
+
+  <div class="stat place-items-left">
+    <div class="stat-title">Date | dd MMMM yyyy HH:mm:ss a | GMT-6</div>
+    <div class="stat-value">{{ customDate() | date : 'dd MMMM yyyy HH:mm:ss a' : 'GMT-6' }}</div>
+    <div class="stat-desc text-secondary">{{ customDate() }}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="stats shadow w-full">
+  <div class="stat place-items-left">
+    <div class="stat-title">Date | dd/MM/yyyy | GMT-6</div>
+    <div class="stat-value">{{ customDate() | date : 'dd/MM/yyyy' : 'GMT-6' }}</div>
+    <div class="stat-desc text-secondary">{{ customDate() }}</div>
+  </div>
+
+  <div class="stat place-items-left">
+    <div class="stat-title">Date | HH:mm:ss a | GMT-6</div>
+    <div class="stat-value">{{ customDate() | date : 'HH:mm:ss a' : 'GMT-6' }}</div>
+    <div class="stat-desc text-secondary">{{ customDate() }}</div>
+  </div>
+
+  <div class="stat place-items-left">
+    <div class="stat-title">Date | EEEE d, MMMM | GMT-6</div>
+    <div class="stat-value">{{ customDate() | date : 'EEEE d, MMMM' : 'GMT-6' }}</div>
+    <div class="stat-desc text-secondary">{{ customDate() }}</div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="flex flex-row items-center gap-4 w-full mt-2">
+  <h1 class="text-2xl font-bold">Change locale:</h1>
+  <div class="flex gap-3 mt-2">
+    <button
+      class="btn btn-outline btn-accent"
+      [class.btn-active]="currentLocale() === 'fr'"
+      (click)="changeLocale('fr')"
+    >
+      French
+    </button>
+    <button
+      class="btn btn-outline btn-accent"
+      [class.btn-active]="currentLocale() === 'en'"
+      (click)="changeLocale('en')"
+    >
+      English
+    </button>
+    <button
+      class="btn btn-outline btn-accent"
+      [class.btn-active]="currentLocale() === 'es'"
+      (click)="changeLocale('es')"
+    >
+      Spanish
+    </button>
+  </div>
+</div>

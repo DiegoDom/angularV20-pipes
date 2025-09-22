@@ -1,0 +1,14 @@
+<div class="navbar bg-base-300 shadow-sm">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl">Pipes APP</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      @for (route of routes; track route.path) {
+      <li>
+        <a routerLinkActive="text-accent" [routerLink]="route.path">{{ route.title }}</a>
+      </li>
+      }
+    </ul>
+  </div>
+</div>

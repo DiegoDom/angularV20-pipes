@@ -1,0 +1,77 @@
+<section>
+  <h1 class="text-2xl font-bold">Uncommon Pipes</h1>
+  <h3 class="text-xl font-thin">Included pipes in Angular</h3>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+  <app-card title="i18nSelectPipe">
+    <p class="text-lg font-thin">
+      Hello {{ client().gender | i18nSelect : invitationMap }} {{ client().name }}, it's a pleasure
+      having you in our event
+    </p>
+    <button (click)="changeClient()" class="btn btn-soft btn-secondary">Change client</button>
+  </app-card>
+
+  <app-card title="i18nPluralPipe">
+    <p class="text-lg font-thin">{{ clients().length | i18nPlural : clientsMap() }}</p>
+    <button
+      [disabled]="clients().length === 0"
+      (click)="passTurn()"
+      class="btn btn-soft btn-secondary"
+    >
+      Next client
+    </button>
+  </app-card>
+
+  <app-card title="SlicePipe">
+    <b class="text-lg font-thin">Original</b>
+    <p class="text-primary">
+      {{ clients().join(', ') }}
+    </p>
+
+    <b class="text-lg font-thin mt-2">Slice 0:2</b>
+    <p class="text-primary">{{ clients() | slice : 0 : 2 }}</p>
+    <b class="text-lg font-thin mt-2">Slice 1:2</b>
+    <p class="text-primary">{{ clients() | slice : 1 : 2 }}</p>
+    <b class="text-lg font-thin mt-2">Slice 1:3</b>
+    <p class="text-primary">{{ clients() | slice : 1 : 3 }}</p>
+    <b class="text-lg font-thin mt-2">Slice 3:4</b>
+    <p class="text-primary">{{ clients() | slice : 3 : 4 }}</p>
+    <b class="text-lg font-thin mt-2">Slice 0:-3</b>
+    <p class="text-primary">{{ clients() | slice : 0 : -3 }}</p>
+  </app-card>
+
+  <app-card title="JSON Pipe">
+    <pre class="text-primary">{{ clients() | json }}</pre>
+    <pre class="text-primary">{{ client() | json }}</pre>
+    <p class="text-primary">{{ clients().join(', ') | json | uppercase }}</p>
+  </app-card>
+
+  <app-card title="KeyValue Pipe">
+    <pre>{{ profile | keyvalue | json }}</pre>
+    <ul>
+      @for (item of profile | keyvalue; track $index) {
+      <li>
+        <strong class="text-primary">{{ item.key | titlecase }}:&nbsp;</strong>
+        <span>{{ item.value }}</span>
+      </li>
+      }
+    </ul>
+  </app-card>
+
+  <app-card title="Async Pipe">
+    @if (promiseValue | async; as value) {
+    <p class="text-lg font-thin text-accent">{{ value }}</p>
+    }
+
+    <!--  -->
+    <h3 class="card-title mb-2">Observable Pipe</h3>
+
+    @if (myObservableTimer | async; as value) {
+    <p class="text-lg font-thin text-accent">Emitted value: {{ value }}</p>
+    }
+    <!--  -->
+    @else {
+    <span class="loading loading-spinner loading-xs text-accent"></span>
+    }
+  </app-card>
+</div>
